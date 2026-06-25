@@ -115,6 +115,7 @@ int array_to_jpeg(uint8_t* array, char* output_path, dim image_size, bool graysc
 	cinfo.input_components = grayscale ? 1 : 3;
 	cinfo.in_color_space = grayscale ? JCS_GRAYSCALE : JCS_RGB;
 	jpeg_set_defaults(&cinfo);
+	jpeg_set_quality(&cinfo, 100, true);
 
 	jpeg_start_compress(&cinfo, true);
 

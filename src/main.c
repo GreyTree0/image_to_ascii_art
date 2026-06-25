@@ -14,10 +14,11 @@ bool is_char_in(char c, char* cmp) {
 
 int main() {
 	
-	char path[60]; 
+	//char path[100];
+	char* path = "./test_images/test10x10.jpg";
 	char gscale = '0';
-	bool grayscale;
-
+	bool grayscale = 1;
+	/*
 	printf("Path to JPEG: ");
 	fgets(path, sizeof(path), stdin);
 	
@@ -28,7 +29,8 @@ int main() {
 	
 	if (is_char_in(gscale, "nN")) grayscale = 0;
 	else grayscale = 1;
-	
+	*/
+
 	dim size = get_jpeg_size(path);
 	int component_size = grayscale ? 1 : 3;
 	printf("%d, %d\n", size.width, size.height);
@@ -44,17 +46,18 @@ int main() {
 
 	jpeg_to_array(image_buffer, path, /*grayscale*/ 1);
 	
-	/*
-	for(int i = 0; i < jpeg_array_size; ++i) {
-		char c = grayscale_to_ascii(image_buffer[i], 0);
-
-		printf("%c", c);
-		if (i % size.width == 0 && i != 0) printf("\n");
+	
+	for(int i = 0; i < size.height; ++i) {
+		for(int j = 0; j < size.width; ++j) {
+			char c = grayscale_to_ascii(image_buffer[i]); // det är en header först eller?
+			//printf("%c", c);
+		}
+		printf("\n");
 	}
-	*/
+	
 
-	array_to_jpeg(image_buffer, "/home/edvin/Pictures/compressed_image.jpeg", size, 1);
-
+	array_to_jpeg(image_buffer, "./compressed_image.jpeg", size, 1);
+	
 
 	
 }

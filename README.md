@@ -1,1 +1,4 @@
-Work in progress...
+Dependencies
+------------
+
+This project requires libjpeg (dynamically linked).

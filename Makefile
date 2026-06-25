@@ -5,7 +5,7 @@ o_files = $(c_files:./src/%.c=./build/%.o)
 dependencies = $(o_files:.o=.d)
 
 all: $(o_files)
-	gcc $^ -ljpeg -o jpeg_to_ascii
+	gcc $^ -ljpeg -o image_to_ascii
 
 ./build/%.o: ./src/%.c 
 	mkdir -p ./build/
@@ -14,6 +14,6 @@ all: $(o_files)
 -include $(dependencies)
 
 clean:
-	rm -fr ./build jpeg_to_ascii
+	rm -fr ./build image_to_ascii compressed_image.jpeg
 
 
